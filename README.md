@@ -9,7 +9,7 @@
 
 ## About
 
-This will build a Docker Image for [Unit](https://unit.nginx.org), with PHP functionality in place..
+This will build a Docker Image for [Unit with PHP Support](https://unit.nginx.org).
 
 ## Maintainer
 

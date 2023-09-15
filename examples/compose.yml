@@ -1,0 +1,22 @@
+services:
+  unit-app:
+    image: tiredofit/unit-php:latest
+    container_name: unit-php-app
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.unit-php-app.rule=Host(`unit-php.example.com`)
+      - traefik.http.services.unit-php-app.loadbalancer.server.port=80
+    volumes:
+      - ./data:/www/html
+      - ./logs:/var/log/unit
+    environment:
+      - TIMEZONE=America/Vancouver
+      - CONTAINER_NAME=unit-php-app
+      - CONTAINER_LOG_LEVEL=INFO
+    networks:
+      - proxy
+    restart: always
+
+networks:
+  proxy:
+    external: true

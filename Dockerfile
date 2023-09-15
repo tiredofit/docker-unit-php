@@ -152,7 +152,6 @@ RUN case "${PHP_BASE}" in \
                             php81-exif \
                             php81-ffi \
                             php81-fileinfo \
-                            php81-fpm \
                             php81-ftp \
                             php81-gd \
                             php81-gettext \

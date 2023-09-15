@@ -36,7 +36,7 @@ ENV PHP_BASE=${PHP_BASE:-"8.2"} \
     PHP_ENABLE_XMLWRITER=TRUE \
     CONTAINER_NAME=unit-php-app \
     CONTAINER_ENABLE_MESSAGING=TRUE \
-    NGINX_ENABLE_CREATE_SAMPLE_HTML=FALSE \
+    UNIT_ENABLE_CREATE_SAMPLE_HTML=FALSE \
     IMAGE_NAME="tiredofit/unit-php" \
     IMAGE_REPO_URL="https://github.com/tiredofit/docker-unit-php/"
 

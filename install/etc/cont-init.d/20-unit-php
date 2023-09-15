@@ -1,0 +1,18 @@
+#!/command/with-contenv bash
+
+source /assets/functions/00-container
+source /assets/defaults/10-unit
+prepare_service
+PROCESS_NAME="unit-php"
+
+
+if [ ! -f "/tmp/.container/container-restart" ] ; then
+    _unit_php_bootstrap
+    _unit_php_configure_server
+    _unit_php_configure_extensions
+    _unit_php_create_default_page
+    if var_true "${UNIT_ENABLE_APPLICATION_CONFIGURATION}"; then _unit_php_configure_site_default ; fi
+    _unit_php_post_init
+fi
+
+liftoff

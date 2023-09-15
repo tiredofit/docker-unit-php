@@ -61,9 +61,6 @@ enable_module () {
                                 "debian" )
                                     silent phpenmod $(basename $module .ini)
                                     if [ "${php_major_version}" != "8" ] ; then silent phpenmod json ; fi
-                                    if [[ "$( ls -l ${php_prefix}/fpm/conf.d/*-opcache.ini |  wc -l )" -gt 1 ]] ; then
-                                       rm -f "$(ls ${php_prefix}/fpm/conf.d/*-opcache.ini | tail -1 )"
-                                    fi
                                     if [[ "$( ls -l ${php_prefix}/cli/conf.d/*-opcache.ini |  wc -l )" -gt 1 ]] ; then
                                        rm -f "$(ls ${php_prefix}/cli/conf.d/*-opcache.ini | tail -1 )"
                                     fi
@@ -167,9 +164,6 @@ disable_module() {
                             "debian" )
                                 silent phpdismod $(basename $module .ini)
                                 if [ "${php_major_version}" != "8" ] ; then phpdismod json ; fi
-                                if [[ "$( ls -l ${php_prefix}/fpm/conf.d/*-opcache.ini |  wc -l )" -ge 1 ]] ; then
-                                    rm -f "$(ls ${php_prefix}/fpm/conf.d/*-opcache.ini | tail -1 )"
-                                fi
                                 if [[ "$( ls -l ${php_prefix}/cli/conf.d/*-opcache.ini |  wc -l )" -ge 1 ]] ; then
                                     rm -f "$(ls ${php_prefix}/cli/conf.d/*-opcache.ini | tail -1 )"
                                 fi
@@ -316,15 +310,9 @@ if [ -n "$1" ] ; then
     case "${1,,}" in
         "enable" )
             enable_module "$2"
-            if [[ "$(pgrep -f 'php-fpm: master process')" -ge "1" ]] ; then
-                pkill php-fpm
-            fi
         ;;
         "disable" )
             disable_module "$2"
-            if [[ "$(pgrep -f 'php-fpm: master process')" -ge "1" ]] ; then
-                pkill php-fpm
-            fi
         ;;
         "list" )
             list_module "$2"

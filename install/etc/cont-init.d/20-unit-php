@@ -2,6 +2,7 @@
 
 source /assets/functions/00-container
 source /assets/defaults/10-unit
+source /assets/functions/10-unit
 prepare_service
 PROCESS_NAME="unit-php"
 

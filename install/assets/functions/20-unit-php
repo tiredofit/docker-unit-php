@@ -151,7 +151,10 @@ _unit_php_configure_site_default() {
                     .applications.php.type = "php" |
                     .applications.php.root = "'$(echo "${UNIT_WEBROOT}")'"
                 ' -o json > /etc/unit/sites.available/default.json
-        sleep 1.0
+        #sleep 1.0
+
+        UNIT_SITE_ENABLED=default
+        unit_site_enable default
     fi
 }
 

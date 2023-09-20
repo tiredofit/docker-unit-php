@@ -1,6 +1,6 @@
 services:
   unit-app:
-    image: tiredofit/unit-php:latest
+    image: tiredofit/unit-php-app:latest
     container_name: unit-php-app
     labels:
       - traefik.enable=true

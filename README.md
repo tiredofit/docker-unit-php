@@ -151,12 +151,6 @@ Be sure to view the following repositories to understand all the customizable op
 | `PHP_POST_INIT_COMMAND`               | If you wish to execute a command before php executes, enter it here and seperate multiples by comma. |                     |
 | `PHP_POST_INIT_SCRIPT`                | If you wish to execute a script before php executes, enter it here and seperate multiples by comma.  |                     |
 | `PHP_HIDE_X_POWERED_BY`               | Hide X-Powered by response                                                                           | `TRUE`              |
-| `PHP_LOG_ACCESS_FILE`                 | PHP Access Logfile Name                                                                              | `access.log`        |
-| `PHP_LOG_ERROR_FILE`                  | Logfile name                                                                                         | `error.log`         |
-| `PHP_LOG_LEVEL`                       | PHP Log Level `alert` `error` `warning` `notice` `debug`                                             | `notice`            |
-| `PHP_LOG_ACCESS_FORMAT`               | Log format - `default` or `json`                                                                     | `default`           |
-| `PHP_LOG_LIMIT`                       | Characters to log                                                                                    | `2048`              |
-| `PHP_LOG_LOCATION`                    | Log Location for PHP Logs                                                                            | `/www/logs/php-fpm` |
 | `PHP_MEMORY_LIMIT`                    | How much memory should PHP use                                                                       | `128M`              |
 | `PHP_OPCACHE_INTERNED_STRINGS_BUFFER` | OPCache interned strings buffer                                                                      | `8`                 |
 | `PHP_OPCACHE_JIT_BUFFER_SIZE`         | JIT Buffer Size `0` to disable                                                                       | `50M`               |

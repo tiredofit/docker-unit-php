@@ -11,6 +11,8 @@
 
 This will build a Docker Image for [Unit with PHP Support](https://unit.nginx.org) to serve applications.
 
+- Supports PHP 7.3-8.2
+
 ## Maintainer
 
 - [Dave Conroy](https://github.com/tiredofit/)
@@ -64,9 +66,14 @@ docker pull ghcr.io/tiredofit/docker-unit-php:(imagetag)
 
 The following image tags are available along with their tagged release based on what's written in the [Changelog](CHANGELOG.md):
 
-| Container OS | Tag       |
-| ------------ | --------- |
-| Alpine       | `:latest` |
+| PHP version | Alpine Base | Tag            |
+| ----------- | ----------- | -------------- |
+| latest      | edge        | `:alpine-edge` |
+| 8.2.x       | 3.18        | `:alpine-8.2`  |
+| 8.1.x       | 3.18        | `:alpine-8.1`  |
+| 8.0.x       | 3.16        | `:alpine-8.0`  |
+| 7.4.x       | 3.15        | `:alpine-7.4`  |
+| 7.3.x       | 3.12        | `:alpine-7.3`  |
 
 #### Multi Architecture
 Images are built primarily for `amd64` architecture, and may also include builds for `arm/v7`, `arm64` and others. These variants are all unsupported. Consider [sponsoring](https://github.com/sponsors/tiredofit) my work so that I can work with various hardware. To see if this image supports multiple architecures, type `docker manifest (image):(tag)`

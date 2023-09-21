@@ -40,7 +40,6 @@ ENV PHP_BASE=${PHP_BASE:-"8.2"} \
     IMAGE_NAME="tiredofit/unit-php" \
     IMAGE_REPO_URL="https://github.com/tiredofit/docker-unit-php/"
 
-### Dependency Installation
 RUN case "${PHP_BASE}" in \
        8.2 ) export php_folder="82" export build_gnupg=true ;; \
        8.1 ) export php_folder="81" export build_gnupg=true ;; \
@@ -54,7 +53,6 @@ RUN case "${PHP_BASE}" in \
                             php82-brotli \
                             php82-bz2 \
                             php82-calendar \
-                            php82-cli \
                             php82-common \
                             php82-ctype \
                             php82-curl \
@@ -65,6 +63,7 @@ RUN case "${PHP_BASE}" in \
                             php82-exif \
                             php82-ffi \
                             php82-fileinfo \
+                            php82-fpm \
                             php82-ftp \
                             php82-gd \
                             php82-gettext \
@@ -152,6 +151,7 @@ RUN case "${PHP_BASE}" in \
                             php81-exif \
                             php81-ffi \
                             php81-fileinfo \
+                            php81-fpm \
                             php81-ftp \
                             php81-gd \
                             php81-gettext \
@@ -227,6 +227,292 @@ RUN case "${PHP_BASE}" in \
                             php81-zip \
                             " && \
     \
+    export PHP_8_0_RUN_DEPS=" \
+                            gnu-libiconv \
+                            mariadb-connector-c \
+                            php8 \
+                            php8-bcmath \
+                            php8-brotli \
+                            php8-bz2 \
+                            php8-calendar \
+                            php8-common \
+                            php8-ctype \
+                            php8-curl \
+                            php8-dba \
+                            php8-dom \
+                            php8-embed \
+                            php8-enchant \
+                            php8-exif \
+                            php8-ffi \
+                            php8-fileinfo \
+                            php8-fpm \
+                            php8-ftp \
+                            php8-gd \
+                            php8-gettext \
+                            php8-gmp \
+                            php8-iconv \
+                            php8-imap \
+                            php8-intl \
+                            php8-ldap \
+                            php8-litespeed \
+                            php8-mbstring \
+                            php8-mysqli \
+                            php8-mysqlnd \
+                            php8-odbc \
+                            php8-opcache \
+                            php8-openssl \
+                            php8-pcntl \
+                            php8-pdo \
+                            php8-pdo_dblib \
+                            php8-pdo_mysql \
+                            php8-pdo_odbc \
+                            php8-pdo_pgsql \
+                            php8-pdo_sqlite \
+                            php8-pear \
+                            php8-pecl-amqp \
+                            php8-pecl-apcu \
+                            php8-pecl-ast \
+                            php8-pecl-couchbase \
+                            php8-pecl-event \
+                            php8-pecl-igbinary \
+                            php8-pecl-imagick \
+                            php8-pecl-lzf \
+                            php8-pecl-mailparse \
+                            php8-pecl-maxminddb \
+                            php8-pecl-mcrypt \
+                            php8-pecl-memcache \
+                            php8-pecl-memcached \
+                            php8-pecl-mongodb \
+                            php8-pecl-msgpack \
+                            php8-pecl-oauth \
+                            php8-pecl-protobuf \
+                            php8-pecl-psr \
+                            php8-pecl-rdkafka \
+                            php8-pecl-redis \
+                            php8-pecl-ssh2 \
+                            php8-pecl-swoole \
+                            php8-pecl-timezonedb \
+                            php8-pecl-uploadprogress \
+                            php8-pecl-uuid \
+                            php8-pecl-vips \
+                            php8-pecl-xdebug \
+                            php8-pecl-xhprof \
+                            php8-pecl-xhprof-assets \
+                            php8-pecl-yaml \
+                            php8-pecl-zstd \
+                            php8-pgsql \
+                            php8-phar \
+                            php8-posix \
+                            php8-pspell \
+                            php8-session \
+                            php8-shmop \
+                            php8-simplexml \
+                            php8-snmp \
+                            php8-soap \
+                            php8-sockets \
+                            php8-sodium \
+                            php8-sqlite3 \
+                            php8-sysvmsg \
+                            php8-sysvsem \
+                            php8-sysvshm \
+                            php8-tideways_xhprof \
+                            php8-tidy \
+                            php8-tokenizer \
+                            php8-xml \
+                            php8-xmlreader \
+                            php8-xmlwriter \
+                            php8-xsl \
+                            php8-zip \
+                            " && \
+    \
+    export PHP_7_4_RUN_DEPS=" \
+                            mariadb-connector-c \
+                            php7 \
+                            php7-bcmath \
+                            php7-brotli \
+                            php7-bz2 \
+                            php7-calendar \
+                            php7-common \
+                            php7-ctype \
+                            php7-curl \
+                            php7-dba \
+                            php7-dom \
+                            php7-embed \
+                            php7-enchant \
+                            php7-exif \
+                            php7-ffi \
+                            php7-fileinfo \
+                            php7-fpm \
+                            php7-ftp \
+                            php7-gd \
+                            php7-gettext \
+                            php7-gmp \
+                            php7-iconv \
+                            php7-imap \
+                            php7-intl \
+                            php7-json \
+                            php7-ldap \
+                            php7-mbstring \
+                            php7-mysqli \
+                            php7-mysqlnd \
+                            php7-odbc \
+                            php7-opcache \
+                            php7-openssl \
+                            php7-pcntl \
+                            php7-pdo \
+                            php7-pdo_dblib \
+                            php7-pdo_mysql \
+                            php7-pdo_odbc \
+                            php7-pdo_pgsql \
+                            php7-pdo_sqlite \
+                            php7-pear \
+                            php7-pecl-amqp \
+                            php7-pecl-apcu \
+                            php7-pecl-ast \
+                            php7-pecl-couchbase \
+                            php7-pecl-event \
+                            php7-pecl-gmagick \
+                            php7-pecl-imagick \
+                            php7-pecl-igbinary \
+                            php7-pecl-lzf \
+                            php7-pecl-mailparse \
+                            php7-pecl-maxminddb \
+                            php7-pecl-mcrypt \
+                            php7-pecl-memcache \
+                            php7-pecl-memcached \
+                            php7-pecl-mongodb \
+                            php7-pecl-msgpack \
+                            php7-pecl-oauth \
+                            php7-pecl-protobuf \
+                            php7-pecl-psr \
+                            php7-pecl-redis \
+                            php7-pecl-ssh2 \
+                            php7-pecl-timezonedb \
+                            php7-pecl-uploadprogress \
+                            php7-pecl-uuid \
+                            php7-pecl-vips \
+                            php7-pecl-xdebug \
+                            php7-pecl-xhprof \
+                            php7-pecl-xhprof-assets \
+                            php7-pecl-yaml \
+                            php7-pecl-zmq \
+                            php7-pgsql \
+                            php7-phalcon \
+                            php7-phar \
+                            php7-posix \
+                            php7-pspell \
+                            php7-session \
+                            php7-shmop \
+                            php7-simplexml \
+                            php7-snmp \
+                            php7-soap \
+                            php7-sockets \
+                            php7-sodium \
+                            php7-sqlite3 \
+                            php7-tidy \
+                            php7-tokenizer \
+                            php7-xml \
+                            php7-xmlreader \
+                            php7-xmlrpc \
+                            php7-xmlwriter \
+                            php7-xsl \
+                            php7-zip \
+                            " && \
+    \
+    export PHP_7_3_RUN_DEPS=" \
+                            mariadb-connector-c \
+                            php7 \
+                            php7-bcmath \
+                            php7-brotli \
+                            php7-bz2 \
+                            php7-calendar \
+                            php7-common \
+                            php7-ctype \
+                            php7-curl \
+                            php7-dba \
+                            php7-dom \
+                            php7-embed \
+                            php7-enchant \
+                            php7-exif \
+                            php7-fileinfo \
+                            php7-fpm \
+                            php7-ftp \
+                            php7-gd \
+                            php7-gettext \
+                            php7-gmp \
+                            php7-iconv \
+                            php7-imap \
+                            php7-intl \
+                            php7-json \
+                            php7-ldap \
+                            php7-litespeed \
+                            php7-maxminddb \
+                            php7-mbstring \
+                            php7-mysqli \
+                            php7-mysqlnd \
+                            php7-odbc \
+                            php7-opcache \
+                            php7-openssl \
+                            php7-pcntl \
+                            php7-pdo \
+                            php7-pdo_dblib \
+                            php7-pdo_mysql \
+                            php7-pdo_odbc \
+                            php7-pdo_pgsql \
+                            php7-pdo_sqlite \
+                            php7-pear \
+                            php7-pecl-amqp \
+                            php7-pecl-apcu \
+                            php7-pecl-ast \
+                            php7-pecl-couchbase \
+                            php7-pecl-event \
+                            php7-pecl-gmagick \
+                            php7-pecl-igbinary \
+                            php7-pecl-imagick \
+                            php7-pecl-lzf \
+                            php7-pecl-mailparse \
+                            php7-pecl-mcrypt \
+                            php7-pecl-memcache \
+                            php7-pecl-memcached \
+                            php7-pecl-msgpack \
+                            php7-pecl-oauth \
+                            php7-pecl-protobuf \
+                            php7-pecl-psr \
+                            php7-pecl-redis \
+                            php7-pecl-ssh2 \
+                            php7-pecl-timezonedb \
+                            php7-pecl-uploadprogress \
+                            php7-pecl-uuid \
+                            php7-pecl-vips \
+                            php7-pecl-xdebug \
+                            php7-pecl-xhprof \
+                            php7-pecl-yaml \
+                            php7-pecl-zmq \
+                            php7-pgsql \
+                            php7-phalcon \
+                            php7-phar \
+                            php7-posix \
+                            php7-pspell \
+                            php7-recode \
+                            php7-session \
+                            php7-shmop \
+                            php7-simplexml \
+                            php7-snmp \
+                            php7-soap \
+                            php7-sockets \
+                            php7-sodium \
+                            php7-sqlite3 \
+                            php7-tidy \
+                            php7-tokenizer \
+                            php7-wddx \
+                            php7-xml \
+                            php7-xmlreader \
+                            php7-xmlrpc \
+                            php7-xmlwriter \
+                            php7-xsl \
+                            php7-zip \
+                            " && \
+    \
     source /assets/functions/00-container && \
     set -x && \
     package update && \
@@ -257,7 +543,6 @@ RUN case "${PHP_BASE}" in \
     rm -rf /etc/logrotate.d/php* && \
     \
     ### Install PHP Composer
-    if [ "${PHP_BASE:0:1}" = "5" ] ; then echo "suhosin.executor.include.whitelist = phar" >> /etc/php${PHP_BASE:0:1}/php.ini ; fi;  \
     curl -sSLk https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \
     if [ -f "/etc/php${php_folder}/*magick*.ini" ]; then mv /tmp/*magick.ini* /etc/php${php_folder}/conf.d/ ; fi ; \
     \

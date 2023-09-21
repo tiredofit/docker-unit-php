@@ -145,34 +145,34 @@ Be sure to view the following repositories to understand all the customizable op
 | [OS Base](https://github.com/tiredofit/docker-alpine/) | Customized Image based on Alpine Linux |
 | [Unit](https://github.com/tiredofit/docker-unit/)      | Unit Base Image                        |
 
-| Parameter                             | Description                                                                                              | Default                                        |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `PHP_APC_SHM_SIZE`                    | APC Cache Memory size - `0` to disable                                                                   | `128M`                                         |
-| `PHP_APC_TTL`                         | APC Time to live in seconds                                                                              | `7200`                                         |
-| `PHP_POST_INIT_COMMAND`           | If you wish to execute a command before php-fpm executes, enter it here and seperate multiples by comma. |                                                |
-| `PHP_POST_INIT_SCRIPT`            | If you wish to execute a script before php-fpm executes, enter it here and seperate multiples by comma.  |                                                |
-| `PHP_HIDE_X_POWERED_BY`               | Hide X-Powered by response                                                                               | `TRUE`                                         |
-| `PHP_LOG_ACCESS_FILE`                 | PHP Access Logfile Name                                                                                  | `access.log`                                   |
-| `PHP_LOG_ERROR_FILE`                  | Logfile name                                                                                             | `error.log`                                    |
-| `PHP_LOG_LEVEL`                       | PHP Log Level `alert` `error` `warning` `notice` `debug`                                                 | `notice`                                       |
-| `PHP_LOG_ACCESS_FORMAT`               | Log format - `default` or `json`                                                                         | `default`                                      |
-| `PHP_LOG_LIMIT`                       | Characters to log                                                                                        | `2048`                                         |
-| `PHP_LOG_LOCATION`                    | Log Location for PHP Logs                                                                                | `/www/logs/php-fpm`                            |
-| `PHP_MEMORY_LIMIT`                    | How much memory should PHP use                                                                           | `128M`                                         |
-| `PHP_OPCACHE_INTERNED_STRINGS_BUFFER` | OPCache interned strings buffer                                                                          | `8`                                            |
-| `PHP_OPCACHE_JIT_BUFFER_SIZE`         | JIT Buffer Size `0` to disable                                                                           | `50M`                                          |
-| `PHP_OPCACHE_JIT_MODE`                | JIT [CRTO](https://wiki.php.net/rfc/jit) Mode - > PHP 8.x                                                | `1255`                                         |
-| `PHP_OPCACHE_MAX_ACCELERATED_FILES`   | OPCache Max accelerated files                                                                            | `10000`                                        |
-| `PHP_OPCACHE_MEM_SIZE`                | OPCache Memory Size - Set `0` to disable or via other env vars                                           | `128`                                          |
-| `PHP_OPCACHE_REVALIDATE_FREQ`         | OPCache revalidate frequency in seconds                                                                  | `2`                                            |
-| `PHP_OPCACHE_MAX_WASTED_PERCENTAGE`   | Max wasted percentage cache                                                                              | `5`                                            |
-| `PHP_OPCACHE_VALIDATE_TIMESTAMPS`     | Validate timestamps `1` or `0`                                                                           | `1`                                            |
-| `PHP_OPCACHE_SAVE_COMMENTS`           | Opcache Save Comments `0` or `1`                                                                         | `1`                                            |
-| `PHP_OPCACHE_MAX_FILE_SIZE`           | Opcache maximum file size                                                                                | `0`                                            |
-| `PHP_OPCACHE_OPTIMIZATION_LEVEL`      | Opcache optimization level                                                                               | `0x7FFFBFF`                                    |
-| `PHP_POST_MAX_SIZE`                   | Maximum Input Size for POST                                                                              | `2G`                                           |
-| `PHP_TIMEOUT`                         | Maximum Script execution Time                                                                            | `180`                                          |
-| `PHP_UPLOAD_MAX_SIZE`                 | Maximum Input Size for Uploads                                                                           | `2G`                                           |
+| Parameter                             | Description                                                                                          | Default             |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------- |
+| `PHP_APC_SHM_SIZE`                    | APC Cache Memory size - `0` to disable                                                               | `128M`              |
+| `PHP_APC_TTL`                         | APC Time to live in seconds                                                                          | `7200`              |
+| `PHP_POST_INIT_COMMAND`               | If you wish to execute a command before php executes, enter it here and seperate multiples by comma. |                     |
+| `PHP_POST_INIT_SCRIPT`                | If you wish to execute a script before php executes, enter it here and seperate multiples by comma.  |                     |
+| `PHP_HIDE_X_POWERED_BY`               | Hide X-Powered by response                                                                           | `TRUE`              |
+| `PHP_LOG_ACCESS_FILE`                 | PHP Access Logfile Name                                                                              | `access.log`        |
+| `PHP_LOG_ERROR_FILE`                  | Logfile name                                                                                         | `error.log`         |
+| `PHP_LOG_LEVEL`                       | PHP Log Level `alert` `error` `warning` `notice` `debug`                                             | `notice`            |
+| `PHP_LOG_ACCESS_FORMAT`               | Log format - `default` or `json`                                                                     | `default`           |
+| `PHP_LOG_LIMIT`                       | Characters to log                                                                                    | `2048`              |
+| `PHP_LOG_LOCATION`                    | Log Location for PHP Logs                                                                            | `/www/logs/php-fpm` |
+| `PHP_MEMORY_LIMIT`                    | How much memory should PHP use                                                                       | `128M`              |
+| `PHP_OPCACHE_INTERNED_STRINGS_BUFFER` | OPCache interned strings buffer                                                                      | `8`                 |
+| `PHP_OPCACHE_JIT_BUFFER_SIZE`         | JIT Buffer Size `0` to disable                                                                       | `50M`               |
+| `PHP_OPCACHE_JIT_MODE`                | JIT [CRTO](https://wiki.php.net/rfc/jit) Mode - > PHP 8.x                                            | `1255`              |
+| `PHP_OPCACHE_MAX_ACCELERATED_FILES`   | OPCache Max accelerated files                                                                        | `10000`             |
+| `PHP_OPCACHE_MEM_SIZE`                | OPCache Memory Size - Set `0` to disable or via other env vars                                       | `128`               |
+| `PHP_OPCACHE_REVALIDATE_FREQ`         | OPCache revalidate frequency in seconds                                                              | `2`                 |
+| `PHP_OPCACHE_MAX_WASTED_PERCENTAGE`   | Max wasted percentage cache                                                                          | `5`                 |
+| `PHP_OPCACHE_VALIDATE_TIMESTAMPS`     | Validate timestamps `1` or `0`                                                                       | `1`                 |
+| `PHP_OPCACHE_SAVE_COMMENTS`           | Opcache Save Comments `0` or `1`                                                                     | `1`                 |
+| `PHP_OPCACHE_MAX_FILE_SIZE`           | Opcache maximum file size                                                                            | `0`                 |
+| `PHP_OPCACHE_OPTIMIZATION_LEVEL`      | Opcache optimization level                                                                           | `0x7FFFBFF`         |
+| `PHP_POST_MAX_SIZE`                   | Maximum Input Size for POST                                                                          | `2G`                |
+| `PHP_TIMEOUT`                         | Maximum Script execution Time                                                                        | `180`               |
+| `PHP_UPLOAD_MAX_SIZE`                 | Maximum Input Size for Uploads                                                                       | `2G`                |
 
 #### Enabling / Disabling Specific Extensions
 

@@ -96,7 +96,7 @@ Sample `site-listener.json` file:
 
 ```
 {
-  "{{ UNIT_LISTEN_IP }}:{{ UNIT_LISTEN_PORT }}": {
+  "{{UNIT_LISTEN_IP}}:{{UNIT_LISTEN_PORT}}": {
     "pass": "application/php"
   }
 }
@@ -108,7 +108,7 @@ Sample `site-application.json` file:
 {
   "php": {
     "type": "php",
-    "root": "{{ UNIT_WEBROOT }}"
+    "root": "{{UNIT_WEBROOT}}"
   }
 }
 ```

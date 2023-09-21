@@ -149,6 +149,7 @@ _unit_php_configure_site_default() {
         yq -nP  '
                     ."'$(echo "${UNIT_LISTEN_IP}:${UNIT_LISTEN_PORT}")'".pass="applications/php"
                 ' -o json > /etc/unit/sites.available/default-listener.json
+        _unit_default_enable=true
     fi
 
     if [ -z "${UNIT_SITE_ENABLED}" ] && [ ! -f "/etc/unit/sites.available/default-application.json" ] && [ -f "/etc/cont-init.d/20-unit-php" ]; then
@@ -156,9 +157,13 @@ _unit_php_configure_site_default() {
                     .php.type = "php" |
                     .php.root = "'$(echo "${UNIT_WEBROOT}")'"
                 ' -o json > /etc/unit/sites.available/default-application.json
+        _unit_default_enable=true
     fi
-    UNIT_SITE_ENABLED=default
-    unit_site_enable default
+
+    if var_true "${_unit_default_enable}" ; then
+        UNIT_SITE_ENABLED=default
+        unit_site_enable default
+    fi
 }
 
 _unit_php_post_init() {

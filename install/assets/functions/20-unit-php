@@ -145,17 +145,20 @@ EOF
 }
 
 _unit_php_configure_site_default() {
-    if [ -z "${UNIT_SITE_ENABLED}" ] && [ ! -f "/etc/unit/sites.available/default.json" ] && [ -f "/etc/cont-init.d/20-unit-php" ]; then
+    if [ -z "${UNIT_SITE_ENABLED}" ] && [ ! -f "/etc/unit/sites.available/default-listener.json" ] && [ -f "/etc/cont-init.d/20-unit-php" ] ; then
         yq -nP  '
-                    .listeners."'$(echo "${UNIT_LISTEN_IP}:${UNIT_LISTEN_PORT}")'".pass="applications/php" |
-                    .applications.php.type = "php" |
-                    .applications.php.root = "'$(echo "${UNIT_WEBROOT}")'"
-                ' -o json > /etc/unit/sites.available/default.json
-        #sleep 1.0
-
-        UNIT_SITE_ENABLED=default
-        unit_site_enable default
+                    ."'$(echo "${UNIT_LISTEN_IP}:${UNIT_LISTEN_PORT}")'".pass="applications/php"
+                ' -o json > /etc/unit/sites.available/default-listener.json
     fi
+
+    if [ -z "${UNIT_SITE_ENABLED}" ] && [ ! -f "/etc/unit/sites.available/default-application.json" ] && [ -f "/etc/cont-init.d/20-unit-php" ]; then
+        yq -nP  '
+                    .php.type = "php" |
+                    .php.root = "'$(echo "${UNIT_WEBROOT}")'"
+                ' -o json > /etc/unit/sites.available/default-application.json
+    fi
+    UNIT_SITE_ENABLED=default
+    unit_site_enable default
 }
 
 _unit_php_post_init() {

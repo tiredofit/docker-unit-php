@@ -10,7 +10,7 @@
 
 This will build a Docker Image for [Unit with PHP Support](https://unit.nginx.org) to serve applications.
 
-- Supports PHP 7.3-8.2
+- Supports PHP 7.3-8.3
 
 ## Maintainer
 

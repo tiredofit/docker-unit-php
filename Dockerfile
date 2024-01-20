@@ -1,12 +1,12 @@
 ARG DISTRO=alpine
-ARG DISTRO_VARIANT=3.18
+ARG DISTRO_VARIANT=edge
 
 FROM docker.io/tiredofit/unit:${DISTRO}-${DISTRO_VARIANT}
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 ARG PHP_BASE
 
-ENV PHP_BASE=${PHP_BASE:-"8.2"} \
+ENV PHP_BASE=${PHP_BASE:-"8.3"} \
     PHP_ENABLE_APCU=TRUE \
     PHP_ENABLE_BCMATH=TRUE \
     PHP_ENABLE_BZ2=TRUE \
@@ -41,13 +41,93 @@ ENV PHP_BASE=${PHP_BASE:-"8.2"} \
     IMAGE_REPO_URL="https://github.com/tiredofit/docker-unit-php/"
 
 RUN case "${PHP_BASE}" in \
+       8.3 ) export php_folder="83" export build_gnupg=true ;; \
        8.2 ) export php_folder="82" export build_gnupg=true ;; \
        8.1 ) export php_folder="81" export build_gnupg=true ;; \
        *) export php_folder=${PHP_BASE:0:1} ; export build_gnupg=false ;; \
     esac ; \
+        export PHP_8_3_RUN_DEPS=" \
+                            php83 \
+                            php83-bcmath \
+                            php83-brotli \
+                            php83-bz2 \
+                            php83-calendar \
+                            php83-common \
+                            php83-ctype \
+                            php83-curl \
+                            php83-dba \
+                            php83-dom \
+                            php83-embed \
+                            php83-enchant \
+                            php83-exif \
+                            php83-ffi \
+                            php83-fileinfo \
+                            php83-ftp \
+                            php83-gd \
+                            php83-gettext \
+                            php83-gmp \
+                            php83-iconv \
+                            php83-imap \
+                            php83-intl \
+                            php83-ldap \
+                            php83-litespeed \
+                            php83-mbstring \
+                            php83-mysqli \
+                            php83-mysqlnd \
+                            php83-odbc \
+                            php83-opcache \
+                            php83-openssl \
+                            php83-pcntl \
+                            php83-pdo \
+                            php83-pdo_dblib \
+                            php83-pdo_mysql \
+                            php83-pdo_odbc \
+                            php83-pdo_pgsql \
+                            php83-pdo_sqlite \
+                            php83-pear \
+                            php83-pecl-amqp \
+                            php83-pecl-apcu \
+                            php83-pecl-ast \
+                            php83-pecl-couchbase \
+                            php83-pecl-igbinary \
+                            php83-pecl-maxminddb \
+                            php83-pecl-memcache \
+                            php83-pecl-memcached \
+                            php83-pecl-mongodb \
+                            php83-pecl-msgpack \
+                            php83-pecl-psr \
+                            php83-pecl-redis \
+                            php83-pecl-swoole \
+                            php83-pecl-uploadprogress \
+                            php83-pecl-xdebug \
+                            php83-pecl-xhprof \
+                            php83-pecl-xhprof-assets \
+                            php83-pecl-yaml \
+                            php83-pecl-zstd \
+                            php83-pgsql \
+                            php83-phar \
+                            php83-posix \
+                            php83-pspell \
+                            php83-session \
+                            php83-shmop \
+                            php83-simplexml \
+                            php83-snmp \
+                            php83-soap \
+                            php83-sockets \
+                            php83-sodium \
+                            php83-sqlite3 \
+                            php83-sysvmsg \
+                            php83-sysvsem \
+                            php83-sysvshm \
+                            php83-tidy \
+                            php83-tokenizer \
+                            php83-xml \
+                            php83-xmlreader \
+                            php83-xmlwriter \
+                            php83-xsl \
+                            php83-zip \
+                            " && \
     export PHP_8_2_RUN_DEPS=" \
-                            gnu-libiconv \
-                            mariadb-connector-c \
                             php82 \
                             php82-bcmath \
                             php82-brotli \
@@ -63,7 +143,6 @@ RUN case "${PHP_BASE}" in \
                             php82-exif \
                             php82-ffi \
                             php82-fileinfo \
-                            php82-fpm \
                             php82-ftp \
                             php82-gd \
                             php82-gettext \
@@ -134,8 +213,6 @@ RUN case "${PHP_BASE}" in \
                             php82-zip \
                             " && \
      export PHP_8_1_RUN_DEPS=" \
-                            gnu-libiconv \
-                            mariadb-connector-c \
                             php81 \
                             php81-bcmath \
                             php81-brotli \
@@ -151,7 +228,6 @@ RUN case "${PHP_BASE}" in \
                             php81-exif \
                             php81-ffi \
                             php81-fileinfo \
-                            php81-fpm \
                             php81-ftp \
                             php81-gd \
                             php81-gettext \
@@ -228,8 +304,6 @@ RUN case "${PHP_BASE}" in \
                             " && \
     \
     export PHP_8_0_RUN_DEPS=" \
-                            gnu-libiconv \
-                            mariadb-connector-c \
                             php8 \
                             php8-bcmath \
                             php8-brotli \
@@ -245,7 +319,6 @@ RUN case "${PHP_BASE}" in \
                             php8-exif \
                             php8-ffi \
                             php8-fileinfo \
-                            php8-fpm \
                             php8-ftp \
                             php8-gd \
                             php8-gettext \
@@ -326,7 +399,6 @@ RUN case "${PHP_BASE}" in \
                             " && \
     \
     export PHP_7_4_RUN_DEPS=" \
-                            mariadb-connector-c \
                             php7 \
                             php7-bcmath \
                             php7-brotli \
@@ -342,7 +414,6 @@ RUN case "${PHP_BASE}" in \
                             php7-exif \
                             php7-ffi \
                             php7-fileinfo \
-                            php7-fpm \
                             php7-ftp \
                             php7-gd \
                             php7-gettext \
@@ -420,7 +491,6 @@ RUN case "${PHP_BASE}" in \
                             " && \
     \
     export PHP_7_3_RUN_DEPS=" \
-                            mariadb-connector-c \
                             php7 \
                             php7-bcmath \
                             php7-brotli \
@@ -435,7 +505,6 @@ RUN case "${PHP_BASE}" in \
                             php7-enchant \
                             php7-exif \
                             php7-fileinfo \
-                            php7-fpm \
                             php7-ftp \
                             php7-gd \
                             php7-gettext \
@@ -526,8 +595,10 @@ RUN case "${PHP_BASE}" in \
     package install .php-run-deps \
                 ca-certificates \
                 git \
+                gnu-libiconv \
                 gnupg \
                 gpgme \
+                mariadb-connector-c \
                 openssl \
                 mariadb-client \
                 postgresql-client \

@@ -68,8 +68,9 @@ The following image tags are available along with their tagged release based on 
 | PHP version | Alpine Base | Tag            |
 | ----------- | ----------- | -------------- |
 | latest      | edge        | `:alpine-edge` |
-| 8.2.x       | 3.18        | `:8.2-alpine`  |
-| 8.1.x       | 3.18        | `:8.1-alpine`  |
+| 8.3.x       | edge        | `:8.2-alpine`  |
+| 8.2.x       | 3.19        | `:8.2-alpine`  |
+| 8.1.x       | 3.19        | `:8.1-alpine`  |
 | 8.0.x       | 3.16        | `:8.0-alpine`  |
 | 7.4.x       | 3.15        | `:7.4-alpine`  |
 | 7.3.x       | 3.12        | `:7.3-alpine`  |
@@ -241,17 +242,17 @@ If you want to enable or disable or list what PHP extensions are available, type
 These images were built to serve a specific need in a production environment and gradually have had more functionality added based on requests from the community.
 ### Usage
 - The [Discussions board](../../discussions) is a great place for working with the community on tips and tricks of using this image.
-- Consider [sponsoring me](https://github.com/sponsors/tiredofit) for personalized support.
+- [Sponsor me](https://tiredofit.ca/sponsor) for personalized support.
 ### Bugfixes
 - Please, submit a [Bug Report](issues/new) if something isn't working as expected. I'll do my best to issue a fix in short order.
 
 ### Feature Requests
 - Feel free to submit a feature request, however there is no guarantee that it will be added, or at what timeline.
-- Consider [sponsoring me](https://github.com/sponsors/tiredofit) regarding development of features.
+- [Sponsor me](https://tiredofit.ca/sponsor) regarding development of features.
 
 ### Updates
 - Best effort to track upstream changes, More priority if I am actively using the image in a production environment.
-- Consider [sponsoring me](https://github.com/sponsors/tiredofit) for up to date releases.
+- [Sponsor me](https://tiredofit.ca/sponsor) for up to date releases.
 
 ## License
 MIT. See [LICENSE](LICENSE) for more details.

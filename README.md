@@ -68,8 +68,8 @@ The following image tags are available along with their tagged release based on 
 | PHP version | Alpine Base | Tag            |
 | ----------- | ----------- | -------------- |
 | latest      | edge        | `:alpine-edge` |
-| 8.3.x       | edge        | `:8.2-alpine`  |
-| 8.2.x       | 3.19        | `:8.2-alpine`  |
+| 8.3.x       | 3.20        | `:8.3-alpine`  |
+| 8.2.x       | 3.20        | `:8.2-alpine`  |
 | 8.1.x       | 3.19        | `:8.1-alpine`  |
 | 8.0.x       | 3.16        | `:8.0-alpine`  |
 | 7.4.x       | 3.15        | `:7.4-alpine`  |

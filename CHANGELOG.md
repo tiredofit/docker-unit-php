@@ -1,3 +1,9 @@
+## 1.0.2 2024-05-27 <dave at tiredofit dot ca>
+
+   ### Changed
+      - Update PHP 8.3 and PHP 8.2 to use Alpine 3.20
+
+
 ## 1.0.1 2024-01-20 <dave at tiredofit dot ca>
 
    ### Added

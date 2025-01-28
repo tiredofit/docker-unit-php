@@ -41,6 +41,7 @@ ENV PHP_BASE=${PHP_BASE:-"8.3"} \
     IMAGE_REPO_URL="https://github.com/tiredofit/docker-unit-php/"
 
 RUN case "${PHP_BASE}" in \
+       8.4 ) export php_folder="83" export build_gnupg=true ;; \
        8.3 ) export php_folder="83" export build_gnupg=true ;; \
        8.2 ) export php_folder="82" export build_gnupg=true ;; \
        8.1 ) export php_folder="81" export build_gnupg=true ;; \
@@ -598,9 +599,9 @@ RUN case "${PHP_BASE}" in \
                 gnu-libiconv \
                 gnupg \
                 gpgme \
+                mariadb-client \
                 mariadb-connector-c \
                 openssl \
-                mariadb-client \
                 postgresql-client \
                 $(printenv PHP_$(echo ${PHP_BASE} | sed 's|\.|_|g')_RUN_DEPS) \
                 && \

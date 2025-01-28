@@ -1,3 +1,9 @@
+## 1.0.3 2025-01-28 <dave at tiredofit dot ca>
+
+   ### Added
+      - Drop Alpine 3.20 to Alpine 3.21
+
+
 ## 1.0.2 2024-05-27 <dave at tiredofit dot ca>
 
    ### Changed

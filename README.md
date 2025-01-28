@@ -43,7 +43,6 @@ This will build a Docker Image for [Unit with PHP Support](https://unit.nginx.or
   - [Feature Requests](#feature-requests)
   - [Updates](#updates)
 - [License](#license)
-- [References](#references)
 
 
 ## Installation
@@ -68,8 +67,8 @@ The following image tags are available along with their tagged release based on 
 | PHP version | Alpine Base | Tag            |
 | ----------- | ----------- | -------------- |
 | latest      | edge        | `:alpine-edge` |
-| 8.3.x       | 3.20        | `:8.3-alpine`  |
-| 8.2.x       | 3.20        | `:8.2-alpine`  |
+| 8.3.x       | 3.21        | `:8.3-alpine`  |
+| 8.2.x       | 3.21        | `:8.2-alpine`  |
 | 8.1.x       | 3.19        | `:8.1-alpine`  |
 | 8.0.x       | 3.16        | `:8.0-alpine`  |
 | 7.4.x       | 3.15        | `:7.4-alpine`  |
@@ -257,6 +256,3 @@ These images were built to serve a specific need in a production environment and
 ## License
 MIT. See [LICENSE](LICENSE) for more details.
 
-## References
-
-* <https://>
